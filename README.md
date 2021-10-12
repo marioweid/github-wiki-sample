@@ -1,2 +1,3 @@
 # Gitlab Wiki Sample
 
+* Initial
