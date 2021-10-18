@@ -1,11 +1,37 @@
-stages:          # List of stages for jobs, and their order of execution
-  - deploy
+stages:
+  - build
+  - copy-wiki-to-github
 
 
-
-deploy-job:      # This job runs in the deploy stage.
+deploy-job: # This job runs in the deploy stage.
   stage: deploy  # It only runs when *both* jobs in the test stage complete successfully.
   tags:
     - python3.9
   script:
     - echo "Deploying application..."
+
+# copy gitlab wiki to github
+copy-wiki-to-github:
+  stage: copy-wiki-to-github
+  tags:
+    - python3.9
+  script:
+    - "which python"
+    - "python --version"
+    - "ls"
+    - "which git"
+    - "git clone https://gitlab-ci-token:${CI_JOB_TOKEN}@sam-dev.cs.hm.edu:6000/marioweid/gitlab-wiki-sample.git"
+  #    - "source ./out/crownet_user/bin/activate"
+  #    - "ls ${CROWNET_HOME}/scripts"
+  #    - "ls ${CROWNET_HOME}/scripts/ci"
+  #    - "ls ${CROWNET_HOME}/scripts/ci"
+  #    - "python ${CROWNET_HOME}/scripts/ci/repo_copy.py --source https://gitlab-ci-token:${CI_JOB_TOKEN}@sam-dev.cs.hm.edu:6000/rover/crownet.wiki.git --destination git@github.com:roVer-HM/crownet.wiki.git"
+  #    - "python ${CROWNET_HOME}/scripts/ci/repo_copy.py --source ssh://git@sam-dev.cs.hm.edu:6000/rover/crownet.wiki.git --destination git@github.com:roVer-HM/crownet.wiki.git"
+  #    - >
+  #      "python ${CROWNET_HOME}/scripts/ci/repo_copy.py
+  #      --source ssh://git@sam-dev.cs.hm.edu:6000/rover/crownet.wiki.git
+  #      --destination git@github.com:roVer-HM/crownet.wiki.git"
+  artifacts:
+    paths:
+      - ${CROWNET_HOME}/scripts
+    expire_in: 4 weeks
