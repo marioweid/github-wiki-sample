@@ -20,6 +20,7 @@ copy-wiki-to-github:
     - "python --version"
     - "ls"
     - "which git"
+    - "echo ${CI_JOB_TOKEN}"
     - "git clone https://gitlab-ci-token:${CI_JOB_TOKEN}@sam-dev.cs.hm.edu:6000/marioweid/gitlab-wiki-sample.git"
   #    - "source ./out/crownet_user/bin/activate"
   #    - "ls ${CROWNET_HOME}/scripts"
