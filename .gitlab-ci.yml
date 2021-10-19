@@ -20,7 +20,6 @@ copy-wiki-to-github:
     - "python --version"
     - "ls"
     - "which git"
-    - "echo ${CI_JOB_TOKEN}"
     - "git clone https://gitlab-ci-token:${CI_JOB_TOKEN}@sam-dev.cs.hm.edu/marioweid/gitlab-wiki-sample.wiki.git"
     - "cd gitlab-wiki-sample.wiki"
     - "git checkout -b master"
@@ -28,7 +27,7 @@ copy-wiki-to-github:
     - "eval `ssh-agent -s`"
     #    - 'ssh-add - <<< "${PRIVATE_KEY_SAMPLE}"'
     - 'echo "${PRIVATE_KEY_SAMPLE}" | tr -d "\r" | ssh-add - > /dev/null'
-    - "git push git@github.com:marioweid/github-wiki-sample.wiki.git"
+    - "ssh -vvv git push git@github.com:marioweid/github-wiki-sample.wiki.git"
   #    - new line
   #    - ssh://git@sam-dev.cs.hm.edu:6000/marioweid/gitlab-wiki-sample.git
   #    - https://sam-dev.cs.hm.edu/marioweid/gitlab-wiki-sample.git
