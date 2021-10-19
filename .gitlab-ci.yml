@@ -22,6 +22,7 @@ copy-wiki-to-github:
     - "which git"
     - "echo ${CI_JOB_TOKEN}"
     - "git clone https://gitlab-ci-token:${CI_JOB_TOKEN}@sam-dev.cs.hm.edu/marioweid/gitlab-wiki-sample.git"
+  #    - new line
   #    - ssh://git@sam-dev.cs.hm.edu:6000/marioweid/gitlab-wiki-sample.git
   #    - https://sam-dev.cs.hm.edu/marioweid/gitlab-wiki-sample.git
   #    - "source ./out/crownet_user/bin/activate"
