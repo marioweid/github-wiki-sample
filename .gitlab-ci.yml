@@ -65,7 +65,7 @@ copy-wiki-to-github:
     - "which git"
     - "echo ${CI_JOB_TOKEN}"
     - "git clone https://gitlab-ci-token:${CI_JOB_TOKEN}@sam-dev.cs.hm.edu/marioweid/gitlab-wiki-sample.wiki.git"
-    - "cd gitlab-wiki-sample"
+    - "cd gitlab-wiki-sample.wiki"
     - "git branch -b master"
     - "ssh-add << ${PRIVATE_KEY_SAMPLE}"
     - "git push git@github.com:marioweid/github-wiki-sample.wiki.git"
