@@ -69,7 +69,7 @@ copy-wiki-to-github:
     - "git checkout -b master"
     - "echo $PRIVATE_KEY_SAMPLE"
     - "eval `ssh-agent -s`"
-    - 'ssh-add - <<< "${PRIVATE_KEY_SAMPLE}"'
+    #    - 'ssh-add - <<< "${PRIVATE_KEY_SAMPLE}"'
     - 'echo "${CI_JOB_TOKEN}" | tr -d "\r" | ssh-add - > /dev/null'
     - "git push git@github.com:marioweid/github-wiki-sample.wiki.git"
   #    - new line
