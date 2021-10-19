@@ -68,6 +68,7 @@ copy-wiki-to-github:
     - "cd gitlab-wiki-sample.wiki"
     - "git checkout -b master"
     - "echo $PRIVATE_KEY_SAMPLE"
+    - "eval `ssh-agent -s`"
     - 'ssh-add - <<< "${PRIVATE_KEY_SAMPLE}"'
     - "git push git@github.com:marioweid/github-wiki-sample.wiki.git"
   #    - new line
