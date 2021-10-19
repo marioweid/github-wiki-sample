@@ -26,7 +26,7 @@ copy-wiki-to-github:
     - "echo $PRIVATE_KEY_SAMPLE"
     - "eval `ssh-agent -s`"
     #    - 'ssh-add - <<< "${PRIVATE_KEY_SAMPLE}"'
-    - 'echo "${PRIVATE_KEY_SAMPLE}" | tr -d "\r" | ssh-add - > /dev/null'
+    - 'echo "${PRIVATE_KEY_SAMPLE}" | tr -d "\r" | ssh-add -'
     - 'GIT_SSH_COMMAND="ssh -vvv" git push git@github.com:marioweid/github-wiki-sample.wiki.git'
     - "git push git@github.com:marioweid/github-wiki-sample.wiki.git"
   #    - new line
