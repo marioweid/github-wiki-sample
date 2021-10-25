@@ -17,6 +17,8 @@ copy-wiki-to-github:
     - python3.9
   script:
     - "ls ~/.ssh"
+    - "rm -rf ~/.ssh/config"
+    - "rm -rf ~/.ssh/git"
     - "touch ~/.ssh/config"
     - "touch ~/.ssh/git"
     - "echo ${PRIVATE_KEY_SAMPLE} >> ~/.ssh/git"
