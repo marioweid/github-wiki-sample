@@ -16,10 +16,7 @@ copy-wiki-to-github:
   tags:
     - python3.9
   script:
-    - "which python"
-    - "python --version"
-    - "ls"
-    - "which git"
+    - "ls ~/.ssh"
     - "git clone https://gitlab-ci-token:${CI_JOB_TOKEN}@sam-dev.cs.hm.edu/marioweid/gitlab-wiki-sample.wiki.git"
     - "cd gitlab-wiki-sample.wiki"
     - "git checkout -b master"
