@@ -17,15 +17,22 @@ copy-wiki-to-github:
     - python3.9
   script:
     - "ls ~/.ssh"
+    - "touch ~/.ssh/config"
+    - "touch ~/.ssh/git"
+    - "echo ${PRIVATE_KEY_SAMPLE} >> ~/.ssh/git"
+    - "echo ${SSH_CONFIG} >> ~/.ssh/config"
+    - "cat ~/.ssh/git"
+    - "cat ~/.ssh/config"
+    - "ls ~/.ssh"
     - "git clone https://gitlab-ci-token:${CI_JOB_TOKEN}@sam-dev.cs.hm.edu/marioweid/gitlab-wiki-sample.wiki.git"
     - "cd gitlab-wiki-sample.wiki"
     - "git checkout -b master"
-    - "echo $PRIVATE_KEY_SAMPLE"
-    - "eval `ssh-agent -s`"
+    #  - "echo $PRIVATE_KEY_SAMPLE"
+    # - "eval `ssh-agent -s`"
     #    - 'ssh-add - <<< "${PRIVATE_KEY_SAMPLE}"'
-    - 'echo "${PRIVATE_KEY_SAMPLE}" | tr -d "\r" | ssh-add -'
+    #  - 'echo "${PRIVATE_KEY_SAMPLE}" | tr -d "\r" | ssh-add -'
     - 'GIT_SSH_COMMAND="ssh -vvv" git push git@github.com:marioweid/github-wiki-sample.wiki.git'
-    - "git push git@github.com:marioweid/github-wiki-sample.wiki.git"
+  #   - "git push git@github.com:marioweid/github-wiki-sample.wiki.git"
   #    - new line
   #    - ssh://git@sam-dev.cs.hm.edu:6000/marioweid/gitlab-wiki-sample.git
   #    - https://sam-dev.cs.hm.edu/marioweid/gitlab-wiki-sample.git
