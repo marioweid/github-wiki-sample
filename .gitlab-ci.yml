@@ -1,11 +1,55 @@
-stages:          # List of stages for jobs, and their order of execution
-  - deploy
+stages:
+  - build
+  - copy-wiki-to-github
 
 
+#deploy-job: # This job runs in the deploy stage.
+#  stage: deploy  # It only runs when *both* jobs in the test stage complete successfully.
+#  tags:
+#    - python3.9
+#  script:
+#    - echo "Deploying application..."
 
-deploy-job:      # This job runs in the deploy stage.
-  stage: deploy  # It only runs when *both* jobs in the test stage complete successfully.
+# copy gitlab wiki to github
+copy-wiki-to-github:
+  stage: copy-wiki-to-github
   tags:
     - python3.9
   script:
-    - echo "Deploying application..."
+    - "ls ~/.ssh"
+    - "rm -rf ~/.ssh/config"
+    - "rm -rf ~/.ssh/git"
+    - "touch ~/.ssh/config"
+    - "touch ~/.ssh/git"
+    - "echo ${PRIVATE_KEY_SAMPLE} > ~/.ssh/git"
+    - "echo ${SSH_CONFIG} > ~/.ssh/config"
+    # - "cat ~/.ssh/git"
+    - "cat ~/.ssh/config"
+    - "ls ~/.ssh"
+    - "git clone https://gitlab-ci-token:${CI_JOB_TOKEN}@sam-dev.cs.hm.edu/marioweid/gitlab-wiki-sample.wiki.git"
+    - "cd gitlab-wiki-sample.wiki"
+    - "git checkout -b master"
+    #  - "echo $PRIVATE_KEY_SAMPLE"
+    - "eval `ssh-agent -s`"
+    - 'ssh-add ~/.ssh/git'
+    #  - 'echo "${PRIVATE_KEY_SAMPLE}" | tr -d "\r" | ssh-add -'
+    - "git remote set-url origin github:marioweid/github-wiki-sample.wiki.git"
+    - 'GIT_SSH_COMMAND="ssh -vvv" git push origin master'
+  #   - "git push git@github.com:marioweid/github-wiki-sample.wiki.git"
+  #    - new line
+  #    - ssh://git@sam-dev.cs.hm.edu:6000/marioweid/gitlab-wiki-sample.git
+  #    - https://sam-dev.cs.hm.edu/marioweid/gitlab-wiki-sample.git
+  #    - "source ./out/crownet_user/bin/activate"
+  #    - "ls ${CROWNET_HOME}/scripts"
+  #    - "ls ${CROWNET_HOME}/scripts/ci"
+  #    - "ls ${CROWNET_HOME}/scripts/ci"
+  #    - "python ${CROWNET_HOME}/scripts/ci/repo_copy.py --source https://gitlab-ci-token:${CI_JOB_TOKEN}@sam-dev.cs.hm.edu:6000/rover/crownet.wiki.git --destination git@github.com:roVer-HM/crownet.wiki.git"
+  #    - "python ${CROWNET_HOME}/scripts/ci/repo_copy.py --source ssh://git@sam-dev.cs.hm.edu:6000/rover/crownet.wiki.git --destination git@github.com:roVer-HM/crownet.wiki.git"
+  #    - >
+  #      "python ${CROWNET_HOME}/scripts/ci/repo_copy.py
+  #      --source ssh://git@sam-dev.cs.hm.edu:6000/rover/crownet.wiki.git
+  #      --destination git@github.com:roVer-HM/crownet.wiki.git"
+  artifacts:
+    paths:
+      - ${CROWNET_HOME}/scripts
+    expire_in: 4 weeks
