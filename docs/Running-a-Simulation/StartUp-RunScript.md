@@ -14,5 +14,19 @@ Be aware that there are multiple configurations, and they are mutually exclusive
 The possible configurations are as follows:
 * OmnetSumo = OMNET & SUMO
 * OmnetVadere = OMNET & VADERE
-* OmnetVadereControl = OMNET & VADERE &CONTROL
+* OmnetVadereControl = OMNET & VADERE & CONTROL
 * VadereControl = VADERE & CONTROL
+
+|sub-command|vadere|control|sumo|omnet|
+| --- | --- | --- | --- | --- |
+| vadere | :heavy_check_mark: |a|a|a|
+| vadere-control |a|a|a|a|
+| vadere-opp |a|a|a|a|
+| vadere-opp-control |a|a|a|a|
+| sumo |a|a|a|a|
+
+* vadere
+* vadere-control
+* vadere-opp
+* vadere-opp-control
+* sumo (with omnet)
