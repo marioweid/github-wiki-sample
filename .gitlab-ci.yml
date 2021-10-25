@@ -31,7 +31,8 @@ copy-wiki-to-github:
     # - "eval `ssh-agent -s`"
     #    - 'ssh-add - <<< "${PRIVATE_KEY_SAMPLE}"'
     #  - 'echo "${PRIVATE_KEY_SAMPLE}" | tr -d "\r" | ssh-add -'
-    - 'GIT_SSH_COMMAND="ssh -vvv" git push git@github.com:marioweid/github-wiki-sample.wiki.git'
+    - "git remote set-url origin github:marioweid/github-wiki-sample.wiki.git"
+    - 'GIT_SSH_COMMAND="ssh -vvv" git push origin master'
   #   - "git push git@github.com:marioweid/github-wiki-sample.wiki.git"
   #    - new line
   #    - ssh://git@sam-dev.cs.hm.edu:6000/marioweid/gitlab-wiki-sample.git

@@ -31,7 +31,7 @@ def api_commit() -> None:
     # git clone ssh://git@sam-dev.cs.hm.edu:6000/marioweid/gitlab-wiki-sample.wiki.git
     # cd gitlab-wiki-sample.wiki
     # git checkout -b master
-    # git remote set-url origin github:marioweid/github-wiki-sample.wiki.gi
+    # git remote set-url origin github:marioweid/github-wiki-sample.wiki.git
     # git push origin master
 
 
