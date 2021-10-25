@@ -19,7 +19,7 @@ The possible configurations are as follows:
 
 |sub-command|vadere|control|sumo|omnet|
 | --- | --- | --- | --- | --- |
-| vadere | :heavy_check_mark: |a|a|a|
+| vadere | :heavy_check_mark: | :heavy_ballout_x:|a|a|
 | vadere-control |a|a|a|a|
 | vadere-opp |a|a|a|a|
 | vadere-opp-control |a|a|a|a|
