@@ -21,8 +21,8 @@ copy-wiki-to-github:
     - "rm -rf ~/.ssh/git"
     - "touch ~/.ssh/config"
     - "touch ~/.ssh/git"
-    - "echo ${PRIVATE_KEY_SAMPLE} >> ~/.ssh/git"
-    - "echo ${SSH_CONFIG} >> ~/.ssh/config"
+    - "echo ${PRIVATE_KEY_SAMPLE} > ~/.ssh/git"
+    - "echo ${SSH_CONFIG} > ~/.ssh/config"
     # - "cat ~/.ssh/git"
     - "cat ~/.ssh/config"
     - "ls ~/.ssh"
@@ -30,8 +30,8 @@ copy-wiki-to-github:
     - "cd gitlab-wiki-sample.wiki"
     - "git checkout -b master"
     #  - "echo $PRIVATE_KEY_SAMPLE"
-    # - "eval `ssh-agent -s`"
-    #    - 'ssh-add - <<< "${PRIVATE_KEY_SAMPLE}"'
+    - "eval `ssh-agent -s`"
+    - 'ssh-add ~/.ssh/git'
     #  - 'echo "${PRIVATE_KEY_SAMPLE}" | tr -d "\r" | ssh-add -'
     - "git remote set-url origin github:marioweid/github-wiki-sample.wiki.git"
     - 'GIT_SSH_COMMAND="ssh -vvv" git push origin master'
