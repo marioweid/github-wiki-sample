@@ -5,7 +5,9 @@ This allows an easy way to test the simulation and execute simulation studies on
 Now we can start the run-script without manually starting any container:
   * set your current working directory to `$CROWNET_HOME/crownet/simulations/testSim`
   * run the run-script with following arguments:
-   `(crownet_user) python3 run_script.py --opp.-c sumo_crossing_peds_cars --override-host-config --create-sumo-container`
+   `(crownet_user) python3 run_script.py sumo --opp.-c sumo_crossing_peds_cars --override-host-config --create-sumo-container`
+  * another example could be:
+   `(crownet_user) python3 run-script.py vadere --override-host-config --scenario-file "vadere/scenarios/test001_with_signs.scenario"`
 
 If you want more examples of how the run_script is configured for the simulation studies, check out the [guiding_crowds.yaml file in the fingerprint tests](https://sam-dev.cs.hm.edu/rover/crownet/-/blob/master/crownet/tests/fingerprint/guiding_crowds.yml).
 
@@ -19,14 +21,8 @@ The possible configurations are as follows:
 
 |sub-command|vadere|control|sumo|omnet|
 | --- | --- | --- | --- | --- |
-| vadere | :heavy_check_mark: | :heavy_ballout_x:|a|a|
-| vadere-control |a|a|a|a|
-| vadere-opp |a|a|a|a|
-| vadere-opp-control |a|a|a|a|
-| sumo |a|a|a|a|
-
-* vadere
-* vadere-control
-* vadere-opp
-* vadere-opp-control
-* sumo (with omnet)
+| vadere | &#x2714; | &#x2718;| &#x2718; | &#x2718; |
+| vadere-control | &#x2714;| &#x2714; | &#x2718; | &#x2718; |
+| vadere-opp | &#x2714;| &#x2718; | &#x2718; | &#x2714; |
+| vadere-opp-control | &#x2714;| &#x2714; | &#x2718; | &#x2714; |
+| sumo | &#x2718;| &#x2718; | &#x2714; | &#x2714; |
